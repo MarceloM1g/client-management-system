@@ -1,0 +1,271 @@
+.cadastro-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #000F18 0%, #0E141B 100%);
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastro-container h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid #66c0f4;
+    padding-bottom: 1rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.cadastro-form {
+    background: linear-gradient(135deg, #000F18 0%, #1b2838 100%);
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid #3c5a78;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cadastro-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #66c0f4, #4c9acc);
+    opacity: 0.8;
+}
+
+.cadastro-form input {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    background: rgba(27, 40, 56, 0.8);
+    border: 1px solid #3c5a78;
+    border-radius: 10px;
+    color: #c7d5e0;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.cadastro-form input::placeholder {
+    color: #8f98a0;
+}
+
+.cadastro-form input:focus {
+    outline: none;
+    border-color: #66c0f4;
+    background: rgba(27, 40, 56, 1);
+    box-shadow: 0 0 0 2px rgba(102, 192, 244, 0.2);
+}
+
+.cadastro-form input:hover {
+    border-color: #66c0f4;
+    background: rgba(27, 40, 56, 0.9);
+}
+
+.cadastro-form button {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background: linear-gradient(135deg, #66c0f4 0%, #4c9acc 100%);
+    border: none;
+    border-radius: 30px;
+    color: #1b2838;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 1rem;
+}
+
+.cadastro-form button:hover {
+    background: linear-gradient(135deg, #7bcbf4 0%, #5ca6d4 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 192, 244, 0.3);
+}
+
+.cadastro-form button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(102, 192, 244, 0.3);
+}
+
+/* Efeito de brilho no formulário */
+.cadastro-form:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(102, 192, 244, 0.05),
+        transparent
+    );
+    animation: shine 2s ease-in-out;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Estados de sucesso */
+.cadastro-success {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #2a475e 0%, #1b2838 100%);
+    border: 1px solid #66c0f4;
+    color: #66c0f4;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: slideInRight 0.3s ease-out;
+    z-index: 1000;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Loading state */
+.cadastro-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.cadastro-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(27, 40, 56, 0.8);
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.cadastro-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #66c0f4;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cadastro-container {
+        padding: 1rem;
+    }
+    
+    .cadastro-container h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cadastro-form {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cadastro-container {
+        padding: 0.5rem;
+    }
+    
+    .cadastro-container h1 {
+        font-size: 1.8rem;
+    }
+    
+    .cadastro-form {
+        padding: 1.5rem;
+    }
+    
+    .cadastro-form input,
+    .cadastro-form button {
+        padding: 0.875rem 1rem;
+    }
+}
+
+/* Animações de entrada */
+.cadastro-form {
+    animation: formSlideUp 0.5s ease-out;
+}
+
+@keyframes formSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efeito de foco nos inputs */
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    position: absolute;
+    left: 1.2rem;
+    top: 1rem;
+    color: #8f98a0;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -0.5rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    color: #66c0f4;
+    background: #1b2838;
+    padding: 0 0.5rem;
+}
